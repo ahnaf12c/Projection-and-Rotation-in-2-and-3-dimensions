@@ -1,7 +1,5 @@
 import math as m
 
-START_POSITION = [0, 0]
-
 def DegreeToRadian(D):
     return D * m.pi / 180
 
@@ -26,7 +24,7 @@ def Rotate2D(x, y, angle):
     # Define the 2D rotation matrix
     R = [
         [m.cos(angle), -m.sin(angle)],
-        [m.sin(angle), m.cos(angle)]
+        [m.sin(angle),  m.cos(angle)]
     ]
 
     # Apply the rotation matrix to the coordinates
@@ -37,9 +35,9 @@ def Rotate2D(x, y, angle):
 
 def Rotate3DInX(x, y, z, A):
     R = [
-        [1, 0, 0],
+        [1,        0,         0],
         [0, m.cos(A), -m.sin(A)],
-        [0, m.sin(A), m.cos(A)]
+        [0, m.sin(A),  m.cos(A)]
     ]
     
     rx = x * R[0][0] + y * R[0][1] + z * R[0][2]
@@ -49,8 +47,8 @@ def Rotate3DInX(x, y, z, A):
 
 def Rotate3DInY(x, y, z, A):
     R = [
-        [m.cos(A), 0, m.sin(A)],
-        [0, 1, 0],
+        [m.cos(A),  0, m.sin(A)],
+        [0,         1,        0],
         [-m.sin(A), 0, m.cos(A)]
     ]
     
@@ -62,7 +60,7 @@ def Rotate3DInY(x, y, z, A):
 def Rotate3DInZ(x, y, z, A):
     R = [
         [m.cos(A), -m.sin(A), 0],
-        [m.sin(A), m.cos(A),  0],
+        [m.sin(A),  m.cos(A), 0],
         [0, 0, 1]
     ]
     
