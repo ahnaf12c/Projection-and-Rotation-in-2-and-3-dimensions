@@ -80,11 +80,3 @@ Coords3d Rotate3DInZ(double x, double y, double z, double A) {
     r.z = R[2][0] * x + R[2][1] * y + R[2][2] * z;
     return r;
 }
-/*
-int main () {
-    double r = DegreeToRadian(45);
-    Coords3d R = Rotate3DInZ(20, 0, 20, r);
-    printf("%lf  %lf  %lf\n", R.x, R.y, R.z);
-    return 0;
-}
-*/
