@@ -51,7 +51,7 @@ if shape.lower() == 'cube':
     t.goto(D)
 
 elif shape.lower() == 'pyramid':
-    A = pr.project(0, 40, 30, 60)  # Assuming the apex is 5 units above the center
+    A = pr.project(0, 40, 30, 60)  
     B = pr.project(-50, -50, -50, 60)
     C = pr.project(50, -50, -50, 60)
     D = pr.project(50, 50, -50, 60)
