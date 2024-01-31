@@ -1,0 +1,86 @@
+import projectingAndRotating as pr
+import turtle as t
+
+shape = t.textinput("Shape", "What shape do you want to be projected?")
+
+t.speed(0)
+t.hideturtle()
+
+if shape.lower() == 'cube':
+    A = pr.project(20, 20, 10, 24)
+    B = pr.project(-20, 20, 10, 24)
+    C = pr.project(-20, -20, 10, 24)
+    D = pr.project(20, -20, 10, 24)
+    E = pr.project(20, 20, 0, 24)
+    F = pr.project(-20, 20, 0, 24)
+    G = pr.project(-20, -20, 0, 24)
+    H = pr.project(20, -20, 0, 24)
+
+    t.penup()
+    t.goto(A)
+    t.dot()
+    t.pendown()
+    t.goto(B)
+    t.dot()
+    t.goto(C)
+    t.dot()
+    t.goto(D)
+    t.dot()
+    t.goto(A)
+    t.goto(E)
+    t.dot()
+    t.goto(F)
+    t.dot()
+    t.goto(G)
+    t.dot()
+    t.goto(H)
+    t.dot()
+    t.goto(E)
+
+    t.penup()
+    t.goto(F)
+    t.pendown()
+    t.goto(B)
+    t.penup()
+    t.goto(C)
+    t.pendown()
+    t.goto(G)
+    t.penup()
+    t.goto(H)
+    t.pendown()
+    t.goto(D)
+
+elif shape.lower() == 'pyramid':
+    A = pr.project(0, 40, 30, 60)  # Assuming the apex is 5 units above the center
+    B = pr.project(-50, -50, -50, 60)
+    C = pr.project(50, -50, -50, 60)
+    D = pr.project(50, 50, -50, 60)
+    E = pr.project(-50, 50, -50, 60)
+
+    t.penup()
+    t.goto(B)
+    t.dot()
+    t.pendown()
+    t.goto(C)
+    t.dot()
+    t.goto(D)
+    t.dot()
+    t.goto(E)
+    t.dot()
+    t.goto(B)
+
+    t.goto(A)
+    t.dot()
+    t.goto(C)
+    t.penup()
+    t.goto(A)
+    t.pendown()
+    t.goto(D)
+    t.penup()
+    t.goto(A)
+    t.pendown()
+    t.goto(E)
+    
+
+t.exitonclick()
+
