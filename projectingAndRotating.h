@@ -44,9 +44,9 @@ Coords2d Rotate2D(double x, double y, double A) {
 
 Coords3d Rotate3DInX(double x, double y, double z, double A) {
     double R[3][3] = {
-        {1, 0, 0},
+        {1,      0,       0},
         {0, cos(A), -sin(A)},
-        {0, sin(A), cos(A)}
+        {0, sin(A),  cos(A)}
     };
     Coords3d r;
     r.x = R[0][0] * x + R[0][1] * y + R[0][2] * z;
@@ -57,8 +57,8 @@ Coords3d Rotate3DInX(double x, double y, double z, double A) {
 
 Coords3d Rotate3DInY(double x, double y, double z, double A) {
     double R[3][3] = {
-        {cos(A), 0, sin(A)},
-        {0, 1, 0},
+        {cos(A),  0, sin(A)},
+        {0,       1,      0},
         {-sin(A), 0, cos(A)}
     };
     Coords3d r;
@@ -71,8 +71,8 @@ Coords3d Rotate3DInY(double x, double y, double z, double A) {
 Coords3d Rotate3DInZ(double x, double y, double z, double A) {
     double R[3][3] = {
         {cos(A), -sin(A), 0},
-        {sin(A), cos(A), 0},
-        {0, 0, 1}
+        {sin(A),  cos(A), 0},
+        {     0,       0, 1}
     };
     Coords3d r;
     r.x = R[0][0] * x + R[0][1] * y + R[0][2] * z;
