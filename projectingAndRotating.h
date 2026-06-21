@@ -1,82 +1,71 @@
-#include<stdio.h>
-#define _USE_MATH_DEFINES
-#include<math.h>
+#ifndef PROJECTING_AND_ROTATING_H
+#define PROJECTING_AND_ROTATING_H
 
-typedef struct
-{
+#include <stdio.h>
+#define _USE_MATH_DEFINES
+#include <math.h>
+
+typedef struct {
     double x;
     double y;
 } Coords2d;
 
-typedef struct
-{
+typedef struct {
     double x;
     double y;
     double z;
 } Coords3d;
 
-double DegreeToRadian(double D) {
-    return D * M_PI / 180;
+inline double DegreeToRadian(double D) {
+    return D * M_PI / 180.0;
 }
 
-double RadianToDegree(double R) {
-    return 180 * R / M_PI;
+inline double RadianToDegree(double R) {
+    return 180.0 * R / M_PI;
 }
 
 Coords2d project(double x, double y, double z, double F) {
+    Coords2d p = {0.0, 0.0}; // Default fallback
     if (F <= z) {
-        printf("Error! Not possible project a point that is behind the viewing point!\n");
+        // Prevent printing on every frame to avoid clogging the terminal
+        // Just return the fallback 0,0 clipping point safely
+        return p; 
     }
-    else {
-        Coords2d p;
-        p.x = x * F / (F - z);
-        p.y = y * F / (F - z);
-        return p;
-    }
+    
+    p.x = x * F / (F - z);
+    p.y = y * F / (F - z);
+    return p;
 }
 
-Coords2d Rotate2D(double x, double y, double A) {
-    Coords2d r;
-    r.x = x * cos(A) - y * sin(A);
-    r.y = x * sin(A) + y * cos(A);
-    return r;
-}
-
+// Optimized 3D rotations (removing redundant 0 and 1 multiplications)
 Coords3d Rotate3DInX(double x, double y, double z, double A) {
-    double R[3][3] = {
-        {1,      0,       0},
-        {0, cos(A), -sin(A)},
-        {0, sin(A),  cos(A)}
-    };
     Coords3d r;
-    r.x = R[0][0] * x + R[0][1] * y + R[0][2] * z;
-    r.y = R[1][0] * x + R[1][1] * y + R[1][2] * z;
-    r.z = R[2][0] * x + R[2][1] * y + R[2][2] * z;
+    double cosA = cos(A);
+    double sinA = sin(A);
+    r.x = x;
+    r.y = y * cosA - z * sinA;
+    r.z = y * sinA + z * cosA;
     return r;
 }
 
 Coords3d Rotate3DInY(double x, double y, double z, double A) {
-    double R[3][3] = {
-        {cos(A),  0, sin(A)},
-        {0,       1,      0},
-        {-sin(A), 0, cos(A)}
-    };
     Coords3d r;
-    r.x = R[0][0] * x + R[0][1] * y + R[0][2] * z;
-    r.y = R[1][0] * x + R[1][1] * y + R[1][2] * z;
-    r.z = R[2][0] * x + R[2][1] * y + R[2][2] * z;
+    double cosA = cos(A);
+    double sinA = sin(A);
+    r.x = x * cosA + z * sinA;
+    r.y = y;
+    r.z = -x * sinA + z * cosA;
     return r;
 }
 
 Coords3d Rotate3DInZ(double x, double y, double z, double A) {
-    double R[3][3] = {
-        {cos(A), -sin(A), 0},
-        {sin(A),  cos(A), 0},
-        {     0,       0, 1}
-    };
     Coords3d r;
-    r.x = R[0][0] * x + R[0][1] * y + R[0][2] * z;
-    r.y = R[1][0] * x + R[1][1] * y + R[1][2] * z;
-    r.z = R[2][0] * x + R[2][1] * y + R[2][2] * z;
+    double cosA = cos(A);
+    double sinA = sin(A);
+    r.x = x * cosA - y * sinA;
+    r.y = x * sinA + y * cosA;
+    r.z = z;
     return r;
 }
+
+#endif // PROJECTING_AND_ROTATING_H
