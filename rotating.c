@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <windows.h> // Replaced unistd.h with the Windows API header
+#include <windows.h> 
 #include "projectingAndRotating.h"
 
 int main() {
