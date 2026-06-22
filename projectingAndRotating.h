@@ -1,4 +1,3 @@
-#ifndef PROJECTING_AND_ROTATING_H
 #define PROJECTING_AND_ROTATING_H
 
 #include <stdio.h>
@@ -16,12 +15,21 @@ typedef struct {
     double z;
 } Coords3d;
 
-inline double DegreeToRadian(double D) {
+double DegreeToRadian(double D) {
     return D * M_PI / 180.0;
 }
 
-inline double RadianToDegree(double R) {
+double RadianToDegree(double R) {
     return 180.0 * R / M_PI;
+}
+
+Coords2d Rotate2D (double x, double y, double A) {
+    Coords2d r;
+    double cosA = cos(A);
+    double sinA = sin(A);
+    r.x = x*cosA - y*sinA;
+    r.y = x*sinA + y*cosA;
+    return r;
 }
 
 Coords2d project(double x, double y, double z, double F) {
