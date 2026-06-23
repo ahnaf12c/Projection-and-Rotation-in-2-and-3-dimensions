@@ -1,7 +1,7 @@
 //! 3D projection and rotation math.
 //!
-//! `#![no_std]` by default; enable the `"std"` feature to opt into `std`-dependent
-//! trait impls (Display, Error, …).  All math uses [`libm`] so trig works without `std`.
+//! `#![no_std]` by default; All math uses [`libm`] so trig
+//! works without `std`.
 //!
 //! # Types
 //!
@@ -19,6 +19,7 @@
 
 #![no_std]
 #![deny(unsafe_code)]
+
 use core::f64::consts::PI;
 use libm::{cos, sin};
 
@@ -142,10 +143,6 @@ pub fn rotate_3d_in_z(x: f64, y: f64, z: f64, a: f64) -> Coords3d {
         z,
     }
 }
-
-// ---------------------------------------------------------------------------
-// std feature: Display impls
-// ---------------------------------------------------------------------------
 
 impl core::fmt::Display for Coords2d {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {

@@ -9,9 +9,5 @@ name = "par"
 [dependencies]
 libm = "0.2"
 
-[features]
-default = []
-std = []
-
 [dev-dependencies]
 minifb = "0.28"
