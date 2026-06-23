@@ -4,4 +4,4 @@ Functions for projection and rotation calculations on 2D and 3D coordinates.
 
 - **C**: use `projectingAndRotating.h` as a header.
 - **Python**: use `projectingAndRotating.py` as a module.
-- **Rust**: [`no_std`](https://docs.rust-embedded.org/book/intro/no-std.html) crate under `rust/`.
+- **Rust**: [`no_std`](https://docs.rust-embedded.org/book/intro/no-std.html) crate under `rust/`. Contributed by my friend @MuntasirSZN
