@@ -1,5 +1,7 @@
 # Projection-and-Rotation-in-2-and-3-dimensions
 
-Here is a Python code and C code with functions to do projection and rotation calculations on different cordinates. Here, you can use the "projectingAndRotating" files as a custom header file in C (the .h file) or a custom module in Python (the .py file).
+Functions for projection and rotation calculations on 2D and 3D coordinates.
 
-Update: My friend MuntasirSZN contributed by adding a Rust equivalent too.
+- **C**: use `projectingAndRotating.h` as a header.
+- **Python**: use `projectingAndRotating.py` as a module.
+- **Rust**: [`no_std`](https://docs.rust-embedded.org/book/intro/no-std.html) crate under `rust/`. Contributed by my friend @MuntasirSZN
