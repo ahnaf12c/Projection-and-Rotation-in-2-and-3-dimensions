@@ -10,6 +10,6 @@ Functions for projection and rotation calculations on 2D and 3D coordinates.
 
 ## Running examples
 
-- **C**: copy `projectingAndRotating.h` to the `Tests/` folder, compile with a C compiler such as `gcc` and `clang` and run.
-- **Python**: copy `projectingAndRotating.py` to the `Tests/` folder, run `python3 Tests/test.py`.
+- **C**: copy `projectingAndRotating.h` to a folder you want, use and compile
+- **Python**: copy `projectingAndRotating.py` to a folder you want, import and use. 
 - **Rust**: `cd` to `rust/` folder, then `cargo run --example <example>`.
